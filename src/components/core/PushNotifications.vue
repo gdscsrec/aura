@@ -26,9 +26,10 @@
             color="primary"
             text
             :loading="isLoading"
-            :disabled="buttonText=='Allowed'"
+            :disabled="buttonText == 'Allowed'"
             @click="requestPermission"
-          >{{ buttonText }}</v-btn>
+            >{{ buttonText }}</v-btn
+          >
           <v-btn color="error" text @click="dialog = false">close</v-btn>
         </v-card-actions>
       </v-card>
@@ -37,20 +38,20 @@
 </template>
 
 <script>
-import firebase from "@/config/firebase";
-import { mapState } from "vuex";
+import firebase from '@/config/firebase';
+import { mapState } from 'vuex';
 export default {
-  name: "PushNotification",
+  name: 'PushNotification',
   data() {
     return {
       dialog: false,
       isLoading: false,
-      token: "Not Granted Yet",
-      buttonText: "Allow"
+      token: 'Not Granted Yet',
+      buttonText: 'Allow',
     };
   },
   computed: {
-    ...mapState(["config"])
+    ...mapState(['config']),
   },
 
   methods: {
@@ -61,53 +62,55 @@ export default {
             `${this.config.keysandsecurity.web_push_certificate}`
           );
           this.isLoading = true;
-          this.token = "Please wait...";
-          Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-              let token = localStorage.getItem("pushNotificationToken");
+          this.token = 'Please wait...';
+          Notification.requestPermission().then((permission) => {
+            if (permission === 'granted') {
+              let token = localStorage.getItem('pushNotificationToken');
               if (token == null || token.length <= 0) {
                 firebase.messaging
-                  .getToken({vapidKey:this.config.keysandsecurity.web_push_certificate})
-                  .then(currentToken => {
+                  .getToken({
+                    vapidKey: this.config.keysandsecurity.web_push_certificate,
+                  })
+                  .then((currentToken) => {
                     if (currentToken) {
                       firebase.firestore
-                        .collection("apiEnd")
+                        .collection('apiEnd')
                         .add({
-                          token: currentToken
+                          token: currentToken,
                         })
                         .then(() => {
-                          this.token = "Successfully Subscribed";
+                          this.token = 'Successfully Subscribed';
                           // alert("SuccessFully Subscribed");
                           this.displayNotificaion();
                           localStorage.setItem(
-                            "pushNotificationToken",
+                            'pushNotificationToken',
                             currentToken
                           );
                           this.isLoading = false;
-                          this.buttonText = "Allowed";
+                          this.buttonText = 'Allowed';
                         })
-                        .catch(err => {
+                        .catch((err) => {
                           this.token = err;
                           this.isLoading = false;
                         });
                     } else {
                       this.isLoading = false;
                       this.token =
-                        "No Instance ID token available. Request permission to generate one.";
+                        'No Instance ID token available. Request permission to generate one.';
                     }
                   })
-                  .catch(err => {
+                  .catch((err) => {
                     this.isLoading = false;
                     this.token = err;
                   });
               } else {
-                this.token = "Already Subscribed";
+                this.token = 'Already Subscribed';
                 this.isLoading = false;
-                this.buttonText = "Allowed";
+                this.buttonText = 'Allowed';
               }
             } else {
               this.isLoading = false;
-              this.token = "Unable to get permission to notify.";
+              this.token = 'Unable to get permission to notify.';
             }
           });
         } else {
@@ -121,33 +124,33 @@ export default {
       }
     },
     displayNotificaion() {
-      if ("serviceWorker" in navigator) {
+      if ('serviceWorker' in navigator) {
         var options = {
-          body: "You Successfully Subscribed to Push Notifications",
-          icon: "img/icons/favicon-32x32.png",
-          dir: "ltr",
-          badge: "img/icons/favicon-32x32.png",
-          tag: "NewSubscription",
+          body: 'You Successfully Subscribed to Push Notifications',
+          icon: 'img/icons/favicon-32x32.png',
+          dir: 'ltr',
+          badge: 'img/icons/favicon-32x32.png',
+          tag: 'NewSubscription',
           renotify: true,
           actions: [
             {
-              action: "open",
-              title: "Visit Site"
-            }
-          ]
+              action: 'open',
+              title: 'Visit Site',
+            },
+          ],
         };
-        navigator.serviceWorker.ready.then(function(swreg) {
-          swreg.showNotification("Successfully Subscribed", options);
+        navigator.serviceWorker.ready.then(function (swreg) {
+          swreg.showNotification('Successfully Subscribed', options);
         });
       }
-    }
+    },
   },
   mounted() {
-    let token = localStorage.getItem("pushNotificationToken");
+    let token = localStorage.getItem('pushNotificationToken');
     if (token && token.length > 0) {
       this.token = 'Already Subscribed';
-      this.buttonText == "Allowed";
+      this.buttonText == 'Allowed';
     }
-  }
+  },
 };
 </script>

@@ -1,399 +1,429 @@
-import firebase from '@/config/firebase'
+import firebase from '@/config/firebase';
 
 let appservice = {
   getTeam: () => {
-    let team = []
+    let team = [];
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("team")
+      firebase.firestore
+        .collection('team')
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
-            doc.forEach(res => {
-              team.push(res.data())
-            })
+            doc.forEach((res) => {
+              team.push(res.data());
+            });
             resolve({
               success: true,
-              data: team
-            })
+              data: team,
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getTeamMember(id) {
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("team").doc(id)
+      firebase.firestore
+        .collection('team')
+        .doc(id)
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (!doc.exists) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
             resolve({
               success: true,
-              data: doc.data()
-            })
+              data: doc.data(),
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
   getAllEvents: () => {
-    let events = []
+    let events = [];
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("events")
+      firebase.firestore
+        .collection('events')
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
-            doc.forEach(res => {
-              events.push(res.data())
-            })
+            doc.forEach((res) => {
+              events.push(res.data());
+            });
             resolve({
               success: true,
-              data: events
-            })
+              data: events,
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getAllCustomEvents: () => {
-    let events = []
+    let events = [];
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("events")
+      firebase.firestore
+        .collection('events')
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
-            doc.forEach(res => {
-              events.push(res.data())
-            })
+            doc.forEach((res) => {
+              events.push(res.data());
+            });
             resolve({
               success: true,
-              data: events
-            })
+              data: events,
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getEvent: (id) => {
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("events").doc(id)
+      firebase.firestore
+        .collection('events')
+        .doc(id)
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (!doc.exists) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
             resolve({
               success: true,
-              data: doc.data()
-            })
+              data: doc.data(),
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getSpeaker: (id) => {
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("Speakers").doc(id)
+      firebase.firestore
+        .collection('Speakers')
+        .doc(id)
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (!doc.exists) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
             resolve({
               success: true,
-              data: doc.data()
-            })
+              data: doc.data(),
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getAllSpeakers: () => {
-    let speakers = []
+    let speakers = [];
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("Speakers")
+      firebase.firestore
+        .collection('Speakers')
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
-            doc.forEach(res => {
-              speakers.push(res.data())
-            })
+            doc.forEach((res) => {
+              speakers.push(res.data());
+            });
             resolve({
               success: true,
-              data: speakers
-            })
+              data: speakers,
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getFeaturesEvents: () => {
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("featureevents").doc('data')
+      firebase.firestore
+        .collection('featureevents')
+        .doc('data')
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (!doc.exists) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
             resolve({
               success: true,
-              data: doc.data().eventid
-            })
+              data: doc.data().eventid,
+            });
             // resolve(doc.data().eventid)
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getAllPartners: () => {
-    let partners = []
+    let partners = [];
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("partners")
+      firebase.firestore
+        .collection('partners')
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
-            doc.forEach(res => {
-              partners.push(res.data())
-            })
+            doc.forEach((res) => {
+              partners.push(res.data());
+            });
             resolve({
               success: true,
-              data: partners
-            })
+              data: partners,
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getAllConfig: () => {
-    let config = []
+    let config = [];
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("config")
+      firebase.firestore
+        .collection('config')
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
-            doc.forEach(res => {
+            doc.forEach((res) => {
               config.push({
                 name: res.id,
-                data: res.data()
-              })
-            })
+                data: res.data(),
+              });
+            });
             resolve({
               success: true,
-              data: config
-            })
+              data: config,
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getAllUpcomingMeetupsEvents: (id) => {
     return new Promise((resolve, reject) => {
       fetch(
-          "https://cors-anywhere.herokuapp.com/https://api.meetup.com/" + id + "/events?&sign=true"
-        ).then(res => res.json()).then(data => {
-            resolve({
-              success: true,
-              data: data
-            })
+        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/' +
+          id +
+          '/events?&sign=true'
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          resolve({
+            success: true,
+            data: data,
+          });
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
   getCommunityGuidelines: () => {
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("config").doc('communityguidelines')
+      firebase.firestore
+        .collection('config')
+        .doc('communityguidelines')
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc.data()).length > 0) {
             resolve({
               success: true,
-              data: doc.data()
-            })
+              data: doc.data(),
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getAllMeetupPastEvents: (id) => {
     return new Promise((resolve, reject) => {
       fetch(
-          "https://cors-anywhere.herokuapp.com/https://api.meetup.com/" + id + "/events?desc=true&photo-host=public&page=300&status=past&sign=true"
-        ).then(res => res.json()).then(data => {
-            resolve({
-              success: true,
-              data: data
-            })
+        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/' +
+          id +
+          '/events?desc=true&photo-host=public&page=300&status=past&sign=true'
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          resolve({
+            success: true,
+            data: data,
+          });
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getAllMediumBlogs: (id) => {
     return new Promise((resolve, reject) => {
-      let baseURL = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/" + id
+      let baseURL =
+        'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/' +
+        id;
 
-      fetch(baseURL).then(res => res.json()).then(data => {
+      fetch(baseURL)
+        .then((res) => res.json())
+        .then((data) => {
           if (data.items.length > 0) {
             resolve({
               success: true,
-              data: data
-            })
+              data: data,
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
 
   getPartner: (id) => {
     return new Promise((resolve, reject) => {
-      firebase.firestore.collection("partners").doc(id)
+      firebase.firestore
+        .collection('partners')
+        .doc(id)
         .get()
-        .then(doc => {
+        .then((doc) => {
           if (doc.empty) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (!doc.exists) {
             resolve({
               success: false,
-              data: {}
-            })
+              data: {},
+            });
           }
           if (Object.keys(doc).length > 0) {
             resolve({
               success: true,
-              data: doc.data()
-            })
+              data: doc.data(),
+            });
           }
         })
-        .catch(e => {
-          reject(e)
+        .catch((e) => {
+          reject(e);
         });
-    })
+    });
   },
-}
+};
 
-export default appservice
+export default appservice;

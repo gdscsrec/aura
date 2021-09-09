@@ -7,11 +7,15 @@
           small
           class="ml-0 mt-0 mx-0"
           icon
-          v-if="checkExistance(data.twitter,0)"
+          v-if="checkExistance(data.twitter, 0)"
           :href="data.twitter"
           target="_blank"
         >
-          <v-icon small :color="this.$vuetify.theme.dark == true?'white':'#333'">mdi-twitter</v-icon>
+          <v-icon
+            small
+            :color="this.$vuetify.theme.dark == true ? 'white' : '#333'"
+            >mdi-twitter</v-icon
+          >
         </v-btn>
 
         <v-btn
@@ -19,44 +23,60 @@
           small
           class="mt-0 mx-0"
           icon
-          v-if="checkExistance(data.linkedin,0)"
+          v-if="checkExistance(data.linkedin, 0)"
           :href="data.linkedin"
           target="_blank"
         >
-          <v-icon small :color="this.$vuetify.theme.dark == true?'white':'#333'">mdi-linkedin</v-icon>
+          <v-icon
+            small
+            :color="this.$vuetify.theme.dark == true ? 'white' : '#333'"
+            >mdi-linkedin</v-icon
+          >
         </v-btn>
         <v-btn
           aria-label="social media btn"
           small
           class="mt-0 mx-0"
           icon
-          v-if="checkExistance(data.github,0)"
+          v-if="checkExistance(data.github, 0)"
           :href="data.github"
           target="_blank"
         >
-          <v-icon small :color="this.$vuetify.theme.dark == true?'white':'#333'">mdi-github-circle</v-icon>
+          <v-icon
+            small
+            :color="this.$vuetify.theme.dark == true ? 'white' : '#333'"
+            >mdi-github-circle</v-icon
+          >
         </v-btn>
         <v-btn
           aria-label="social media btn"
           small
           class="mt-0 mx-0"
           icon
-          v-if="checkExistance(data.medium,0)"
+          v-if="checkExistance(data.medium, 0)"
           :href="data.medium"
           target="_blank"
         >
-          <v-icon small :color="this.$vuetify.theme.dark == true?'white':'#333'">mdi-medium</v-icon>
+          <v-icon
+            small
+            :color="this.$vuetify.theme.dark == true ? 'white' : '#333'"
+            >mdi-medium</v-icon
+          >
         </v-btn>
         <v-btn
           aria-label="social media btn"
           small
           class="mt-0 mx-0"
           icon
-          v-if="checkExistance(data.web,0)"
+          v-if="checkExistance(data.web, 0)"
           :href="data.web"
           target="_blank"
         >
-          <v-icon small :color="this.$vuetify.theme.dark == true?'white':'#333'">mdi-link-variant</v-icon>
+          <v-icon
+            small
+            :color="this.$vuetify.theme.dark == true ? 'white' : '#333'"
+            >mdi-link-variant</v-icon
+          >
         </v-btn>
       </v-col>
     </v-row>
@@ -65,6 +85,6 @@
 
 <script>
 export default {
-  props: ["data"]
+  props: ['data'],
 };
 </script>

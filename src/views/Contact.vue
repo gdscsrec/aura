@@ -21,17 +21,17 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 export default {
   components: {
-    contactHeader:()=>import('@/components/contact/ContactHeader'),
-    contactDetails:()=>import('@/components/contact/ContactDetails')
+    contactHeader: () => import('@/components/contact/ContactHeader'),
+    contactDetails: () => import('@/components/contact/ContactDetails'),
   },
   computed: {
-    ...mapState(["config"])
+    ...mapState(['config']),
   },
   data: () => ({
-    loading:false,
-  })
+    loading: false,
+  }),
 };
 </script>

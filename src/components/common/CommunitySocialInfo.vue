@@ -1,7 +1,10 @@
 <template>
-  <p class="google-font mt-4 mb-3" style="font-size:130%">
+  <p class="google-font mt-4 mb-3" style="font-size: 130%">
     Follow Us:
-    <v-tooltip top v-if="checkExistance(config.generalConfig.socialLinks.facebook,0)">
+    <v-tooltip
+      top
+      v-if="checkExistance(config.generalConfig.socialLinks.facebook, 0)"
+    >
       <template v-slot:activator="{ on }">
         <v-btn
           text
@@ -18,7 +21,10 @@
       <span>Facebook</span>
     </v-tooltip>
 
-    <v-tooltip top v-if="checkExistance(config.generalConfig.socialLinks.twitter,0)">
+    <v-tooltip
+      top
+      v-if="checkExistance(config.generalConfig.socialLinks.twitter, 0)"
+    >
       <template v-slot:activator="{ on }">
         <v-btn
           text
@@ -35,7 +41,10 @@
       <span>Twitter</span>
     </v-tooltip>
 
-    <v-tooltip top v-if="checkExistance(config.generalConfig.socialLinks.instagram,0)">
+    <v-tooltip
+      top
+      v-if="checkExistance(config.generalConfig.socialLinks.instagram, 0)"
+    >
       <template v-slot:activator="{ on }">
         <v-btn
           text
@@ -52,7 +61,10 @@
       <span>Instagram</span>
     </v-tooltip>
 
-    <v-tooltip top v-if="checkExistance(config.generalConfig.socialLinks.github,0)">
+    <v-tooltip
+      top
+      v-if="checkExistance(config.generalConfig.socialLinks.github, 0)"
+    >
       <template v-slot:activator="{ on }">
         <v-btn
           text
@@ -68,7 +80,10 @@
       </template>
       <span>Github</span>
     </v-tooltip>
-    <v-tooltip top v-if="checkExistance(config.generalConfig.socialLinks.linkedin,0)">
+    <v-tooltip
+      top
+      v-if="checkExistance(config.generalConfig.socialLinks.linkedin, 0)"
+    >
       <template v-slot:activator="{ on }">
         <v-btn
           text
@@ -84,7 +99,10 @@
       </template>
       <span>Linkedin</span>
     </v-tooltip>
-    <v-tooltip top v-if="checkExistance(config.generalConfig.socialLinks.youtube,0)">
+    <v-tooltip
+      top
+      v-if="checkExistance(config.generalConfig.socialLinks.youtube, 0)"
+    >
       <template v-slot:activator="{ on }">
         <v-btn
           text
@@ -100,7 +118,10 @@
       </template>
       <span>YouTube</span>
     </v-tooltip>
-    <v-tooltip top v-if="checkExistance(config.generalConfig.socialLinks.medium,0)">
+    <v-tooltip
+      top
+      v-if="checkExistance(config.generalConfig.socialLinks.medium, 0)"
+    >
       <template v-slot:activator="{ on }">
         <v-btn
           text
@@ -121,10 +142,9 @@
 
 <script>
 export default {
-  name: "CommunitySocialInfo",
-  props: ["config"],
+  name: 'CommunitySocialInfo',
+  props: ['config'],
 };
 </script>
 
-<style>
-</style>
+<style></style>

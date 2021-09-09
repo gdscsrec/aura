@@ -8,7 +8,10 @@
             :lazy-src="getImgUrl(eventDetails.image, 'eventbanner.jpg')"
             width="100%"
             cover
-            style="border-bottom-left-radius:8px;border-bottom-right-radius:8px;"
+            style="
+              border-bottom-left-radius: 8px;
+              border-bottom-right-radius: 8px;
+            "
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,1)"
             height="250px"
           >
@@ -24,16 +27,16 @@
               class="fill-height align-end google-font pb-5 white--text"
             >
               <div>
-                <p class="my-0" style="font-size:150%">
+                <p class="my-0" style="font-size: 150%">
                   {{ eventDetails.name }}
                 </p>
                 <!-- {{config}} -->
                 <!-- <br> -->
-                <p class="my-0 my-n1" style="font-size:80%">
+                <p class="my-0 my-n1" style="font-size: 80%">
                   {{ config.generalConfig.name }}
                 </p>
                 <!-- <br> -->
-                <p class="my-0 my-n2" style="font-size:70%">
+                <p class="my-0 my-n2" style="font-size: 70%">
                   {{ eventDetails.date }}
                 </p>
               </div>
@@ -61,11 +64,13 @@
                   : 'grey--text text--darken-3'
               "
               class="google-font mb-0"
-              style="font-size:180%"
+              style="font-size: 180%"
             >
               {{ eventDetails.name }} Details
             </h1>
-            <p class="google-font mb-3" style="font-size:110%">{{ eventDetails.des }}</p>
+            <p class="google-font mb-3" style="font-size: 110%">
+              {{ eventDetails.des }}
+            </p>
 
             <span v-for="(item, i) in eventDetails.hashtags" :key="i">
               <v-chip
@@ -90,7 +95,7 @@
               <b>Venue: </b>
               <a
                 target="_blank"
-                style="text-decoration:none"
+                style="text-decoration: none"
                 :href="eventDetails.venue.googlemapsurl"
                 >{{ eventDetails.venue.name }}</a
               >
@@ -173,13 +178,13 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 
 export default {
-  name: "EventAbout",
-  props: ["eventDetails"],
+  name: 'EventAbout',
+  props: ['eventDetails'],
   computed: {
-    ...mapState(["config"]),
+    ...mapState(['config']),
   },
 };
 </script>

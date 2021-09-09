@@ -4,13 +4,13 @@
     clipped
     floating
     v-model="eventDrawer"
-    :class="this.$vuetify.theme.dark == true?'black':'grey lighten-5'"
+    :class="this.$vuetify.theme.dark == true ? 'black' : 'grey lighten-5'"
   >
     <v-list dense shaped>
       <v-list-item
         v-for="(link, i) in links"
         :key="i"
-        :to="'/events/'+$route.params.id+''+link.to"
+        :to="'/events/' + $route.params.id + '' + link.to"
         class="google-font my-0 py-0"
         color="primary"
       >
@@ -25,19 +25,36 @@
 
       <v-divider class="my-2"></v-divider>
 
-      <v-list-item to="/about" target="_blank" class="google-font my-0 py-0" color="primary">
+      <v-list-item
+        to="/about"
+        target="_blank"
+        class="google-font my-0 py-0"
+        color="primary"
+      >
         <v-list-item-content>
           <v-list-item-title v-text="'Community Guidlines'" />
         </v-list-item-content>
       </v-list-item>
-      <v-list-item to="/about" target="_blank" class="google-font my-0 py-0" color="primary">
+      <v-list-item
+        to="/about"
+        target="_blank"
+        class="google-font my-0 py-0"
+        color="primary"
+      >
         <v-list-item-content>
           <v-list-item-title v-text="'Code of Conduct'" />
         </v-list-item-content>
       </v-list-item>
-      <v-list-item to="/about" target="_blank"  class="google-font my-0 py-0" color="primary">
+      <v-list-item
+        to="/about"
+        target="_blank"
+        class="google-font my-0 py-0"
+        color="primary"
+      >
         <v-list-item-content>
-          <v-list-item-title v-text="'About '+ config.generalConfig.name || ''" />
+          <v-list-item-title
+            v-text="'About ' + config.generalConfig.name || ''"
+          />
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -48,8 +65,9 @@
           <a
             href="https://github.com/gdg-x/aura/"
             target="_blank"
-            style="text-decoration:none"
-          >Aura</a>
+            style="text-decoration: none"
+            >Aura</a
+          >
         </p>
       </div>
     </template>
@@ -57,54 +75,53 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapGetters, mapMutations } from 'vuex';
 export default {
-  name: "eventDrawer",
+  name: 'eventDrawer',
   data: () => ({
     links: [
       {
-        text: "About",
-        to: "/about",
-        icon: "mdi-information-outline"
+        text: 'About',
+        to: '/about',
+        icon: 'mdi-information-outline',
       },
       {
-        text: "Speakers",
-        to: "/speakers",
-        icon: "mdi-account-multiple-outline"
+        text: 'Speakers',
+        to: '/speakers',
+        icon: 'mdi-account-multiple-outline',
       },
       {
-        text: "Schedule",
-        to: "/schedule",
-        icon: "mdi-television-guide"
+        text: 'Schedule',
+        to: '/schedule',
+        icon: 'mdi-television-guide',
       },
       {
-        text: "Partners",
-        to: "/partners",
-        icon: "mdi-currency-usd"
+        text: 'Partners',
+        to: '/partners',
+        icon: 'mdi-currency-usd',
       },
       {
-        text: "Team",
-        to: "/team",
-        icon: "mdi-account-box-outline"
-      }
-    ]
+        text: 'Team',
+        to: '/team',
+        icon: 'mdi-account-box-outline',
+      },
+    ],
   }),
   computed: {
-    ...mapState(["config"]),
+    ...mapState(['config']),
     eventDrawer: {
       get() {
         return this.$store.state.eventDrawer;
       },
       set(val) {
         this.setEventDrawer(val);
-      }
-    }
+      },
+    },
   },
   methods: {
-    ...mapMutations(["setEventDrawer"])
-  }
+    ...mapMutations(['setEventDrawer']),
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>
