@@ -4,8 +4,8 @@
       <v-col cols="12" md="3" lg="3" sm="4" class>
         <p class="google-font mb-0" style="font-size: 150%">What we do?</p>
         <p class="google-font mt-0" style="font-size: 95%">
-          Google Developer Groups (GDGs) are for developers who are interested
-          in Google's developer technology.
+          Google Developer Student Clubs (GDSCs) are university based community
+          groups for students interested in Google developer technologies.
         </p>
         <p class="google-font" style="font-size: 95%">
           About different Google technologies

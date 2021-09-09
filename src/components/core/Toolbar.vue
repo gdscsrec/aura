@@ -63,7 +63,7 @@
     >
       <v-tab
         aria-label="toolbar links"
-        v-for="(link, i) in links.filter((obj) => obj.meta.showToolbar)"
+        v-for="(link, i) in links.filter(obj => obj.meta.showToolbar)"
         :key="i"
         :to="link.to"
         class="google-font"
